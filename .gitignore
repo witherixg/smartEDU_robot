@@ -4,15 +4,15 @@ test.py
 
 tester.py
 
-./build
+./build/*
 
-./dist/theme
+./dist/theme/
 
 ./dist/azure.tcl
 
 ./dist/dist.exe
 
-./theme
+./theme/
 
 azure.tcl
 

@@ -1,6 +1,9 @@
+import webbrowser
+
 import requests
 import os
 import tkinter as tk
+import webbrowser as wb
 from tkinter import filedialog
 from tkinter import ttk
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -173,6 +176,15 @@ def exist_match(small_list: list, large_list: list) -> bool:
 
     return True
 
+
+def websites(s: str):
+    website_dict = {
+        "Github": "https://github.com/witherixg/smartEDU_robot/",
+        "Lanzou": "https://sywt.lanzout.com/b021btj2f"
+    }
+    def open_website():
+        webbrowser.open(website_dict[s])
+    return open_website
 
 def show_gui():
     global path
@@ -441,10 +453,21 @@ def show_gui():
     path_button = ttk.Button(download_setting_frame, text="\u9009\u62E9...", command=path_selector)
     path_button.grid(row=1, column=2, padx=5, pady=5, sticky="nsew")
 
+    about_frame = ttk.LabelFrame(setting_frame, text="\u76F8\u5173\u9875\u9762")
+    about_frame.grid(
+        row=3, column=0, padx=20, pady=20, sticky="nsew"
+    )
+
+    github_button = ttk.Button(about_frame, text="Github", command=websites("Github"))
+    github_button.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
+
+    lanzou_button = ttk.Button(about_frame, text="\u84DD\u594F\u4E91(\u5BC6\u7801:dzjc)", command=websites("Lanzou"))
+    lanzou_button.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
+
     save_button = ttk.Button(
         setting_frame, text="\u4FDD\u5B58\u8BBE\u7F6E", style="Accent.TButton", command=setting_writer
     )
-    save_button.grid(row=3, column=0, padx=5, pady=5, sticky="nsew")
+    save_button.grid(row=4, column=0, padx=5, pady=5, sticky="nsew")
 
     # ==================== Setting Frame ====================
     # Get settings if existent
