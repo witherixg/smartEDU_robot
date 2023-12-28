@@ -1,3 +1,5 @@
+import webbrowser
+
 import requests
 import os
 import tkinter as tk
@@ -5,8 +7,7 @@ from tkinter import filedialog
 from tkinter import ttk
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-headers = {
-}
+headers = {}
 
 tag_url = "https://s-file-1.ykt.cbern.com.cn/zxx/ndrs/tags/tch_material_tag.json"
 data_urls = "https://s-file-2.ykt.cbern.com.cn/zxx/ndrs/resources/tch_material/version/data_version.json"
@@ -85,10 +86,10 @@ def get_books():
             book_tag_list = []
             book_name = book["title"]
             for tag in temp_tag_list:
-                if "册" in tag["tag_name"] \
-                        or "修" in tag["tag_name"] \
-                        or tag["tag_name"] == "教材" \
-                        or tag["tag_name"] == "高中年级":
+                if "\u518C" in tag["tag_name"] \
+                        or "\u4FEE" in tag["tag_name"] \
+                        or tag["tag_name"] == "\u6559\u6750" \
+                        or tag["tag_name"] == "\u9AD8\u4E2D\u5E74\u7EA7":
                     pass
                 else:
                     book_tag_list.append(tag["tag_id"])
@@ -174,6 +175,15 @@ def exist_match(small_list: list, large_list: list) -> bool:
     return True
 
 
+def websites(s: str):
+    website_dict = {
+        "Github": "https://github.com/witherixg/smartEDU_robot/",
+        "Lanzou": "https://sywt.lanzout.com/b021btj2f"
+    }
+    def open_website():
+        webbrowser.open(website_dict[s])
+    return open_website
+
 def show_gui():
     global path
     # Init window
@@ -181,7 +191,7 @@ def show_gui():
     root.tk.call("source", "azure.tcl")
     root.tk.call("set_theme", "light")
     root.geometry("800x500")
-    root.title("电子课本下载器")
+    root.title("\u7535\u5B50\u8BFE\u672C\u4E0B\u8F7D\u5668")
     with open("./smartEDU_temp.ico", "wb+") as icon:
         icon.write(requests.get("https://basic.smartedu.cn/favicon.ico").content)
     root.iconbitmap("./smartEDU_temp.ico")
@@ -441,10 +451,21 @@ def show_gui():
     path_button = ttk.Button(download_setting_frame, text="\u9009\u62E9...", command=path_selector)
     path_button.grid(row=1, column=2, padx=5, pady=5, sticky="nsew")
 
+    about_frame = ttk.LabelFrame(setting_frame, text="\u76F8\u5173\u9875\u9762")
+    about_frame.grid(
+        row=3, column=0, padx=20, pady=20, sticky="nsew"
+    )
+
+    github_button = ttk.Button(about_frame, text="Github", command=websites("Github"))
+    github_button.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
+
+    lanzou_button = ttk.Button(about_frame, text="\u84DD\u594F\u4E91(\u5BC6\u7801:dzjc)", command=websites("Lanzou"))
+    lanzou_button.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
+
     save_button = ttk.Button(
         setting_frame, text="\u4FDD\u5B58\u8BBE\u7F6E", style="Accent.TButton", command=setting_writer
     )
-    save_button.grid(row=3, column=0, padx=5, pady=5, sticky="nsew")
+    save_button.grid(row=4, column=0, padx=5, pady=5, sticky="nsew")
 
     # ==================== Setting Frame ====================
     # Get settings if existent
