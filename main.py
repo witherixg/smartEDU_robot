@@ -3,7 +3,6 @@ import webbrowser
 import requests
 import os
 import tkinter as tk
-import webbrowser as wb
 from tkinter import filedialog
 from tkinter import ttk
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -193,7 +192,7 @@ def show_gui():
     root.tk.call("source", "azure.tcl")
     root.tk.call("set_theme", "light")
     root.geometry("800x500")
-    root.title("电子课本下载器")
+    root.title("\u7535\u5B50\u8BFE\u672C\u4E0B\u8F7D\u5668")
     with open("./smartEDU_temp.ico", "wb+") as icon:
         icon.write(requests.get("https://basic.smartedu.cn/favicon.ico").content)
     root.iconbitmap("./smartEDU_temp.ico")
