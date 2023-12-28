@@ -7,8 +7,7 @@ from tkinter import filedialog
 from tkinter import ttk
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-headers = {
-}
+headers = {}
 
 tag_url = "https://s-file-1.ykt.cbern.com.cn/zxx/ndrs/tags/tch_material_tag.json"
 data_urls = "https://s-file-2.ykt.cbern.com.cn/zxx/ndrs/resources/tch_material/version/data_version.json"
