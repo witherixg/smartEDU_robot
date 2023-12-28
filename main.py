@@ -86,10 +86,10 @@ def get_books():
             book_tag_list = []
             book_name = book["title"]
             for tag in temp_tag_list:
-                if "册" in tag["tag_name"] \
-                        or "修" in tag["tag_name"] \
-                        or tag["tag_name"] == "教材" \
-                        or tag["tag_name"] == "高中年级":
+                if "\u518C" in tag["tag_name"] \
+                        or "\u4FEE" in tag["tag_name"] \
+                        or tag["tag_name"] == "\u6559\u6750" \
+                        or tag["tag_name"] == "\u9AD8\u4E2D\u5E74\u7EA7":
                     pass
                 else:
                     book_tag_list.append(tag["tag_id"])
