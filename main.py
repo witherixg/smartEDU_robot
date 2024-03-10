@@ -201,8 +201,8 @@ def show_gui():
     thread_num_var = tk.StringVar()
     download_directly_var = tk.BooleanVar(value=False)
     progress_var = tk.IntVar(value=0)
-
     path = path_var.get()
+
     if not path[-1] == "/":
         path += "/"
     path.replace("\\", "/")
@@ -226,8 +226,9 @@ def show_gui():
     def path_selector():
         nonlocal path_var
         global path
-        path_var.set(filedialog.askdirectory())
-        path = path_var.get()
+        s = filedialog.askdirectory()
+        if len(s) != 0:
+            path_var.set(s)
         if not path[-1] == "/":
             path += "/"
         path.replace("\\", "/")

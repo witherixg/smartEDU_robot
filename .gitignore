@@ -1,3 +1,5 @@
+.gitignore
+
 example.py
 
 test.py
@@ -9,3 +11,5 @@ tester.py
 part_100-23-07-31.json
 
 tch_material_tag-23-07-26.json
+
+setup.iss
