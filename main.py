@@ -103,18 +103,14 @@ def get_books():
     for k in uuid_dict.keys():
         uuid_chosen_dict[k] = 0
 
-
-# Deprecated
-def print_book_folders():
-    for element in book_folders:
-        print(f"{id(element)}: ({element.uuids}) at {element.path}")
-
-
-# Deprecated
-def print_books():
-    for element in books:
-        print(f"{element.uuid}: {element.name} at {element.folder.path}")
-
+# def print_book_folders():
+#     for element in book_folders:
+#         print(f"{id(element)}: ({element.uuids}) at {element.path}")
+#
+#
+# def print_books():
+#     for element in books:
+#         print(f"{element.uuid}: {element.name} at {element.folder.path}")
 
 def download_all():
     with ThreadPoolExecutor(max_workers=thread_num) as pool:
