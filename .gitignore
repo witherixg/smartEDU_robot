@@ -8,6 +8,8 @@ tester.py
 
 ./dist/
 
+./.venv/
+
 azure.tcl
 
 part_100-23-07-31.json
