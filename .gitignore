@@ -1,11 +1,22 @@
-./build/
+example.py
 
-./dist/
+test.py
+
+tester.py
+
+./build/*
+
+./dist/theme/
+
+./dist/azure.tcl
+
+./dist/dist.exe
 
 ./theme/
 
-./smartEDU_src
+azure.tcl
 
-./smartEDU_temp.ico
 
-./smartEDU_temp.spec
+part_100-23-07-31.json
+
+tch_material_tag-25-03-23.json
